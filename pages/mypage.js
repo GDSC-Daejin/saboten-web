@@ -1,20 +1,19 @@
-import styles from "../styles/Home.module.css";
-import {NextPage} from "next";
 import Seo from "../component/common/Seo";
 import styled from "styled-components";
 import {useRouter} from "next/router";
 
 const Button = styled.button`
-  width: 300px;
-  height: 50px;
-  background-color: #0070f3;
+  width: 250px;
+  height: 80px;
+  background-color: green;
+  border-radius: 20px;
+  border: none;
   color: white;
-  font-size: 20px;
+  font-size: 30px;
+  margin-top: 30%;
 `;
 
 const Main = styled.div`
-  background-color: antiquewhite;
-  min-height: 100vh;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -22,7 +21,7 @@ const Main = styled.div`
   align-items: center;
 `;
 
-const MyPage: NextPage = () => {
+const MyPage = () => {
     const router = useRouter();
     return (
             <Main>
