@@ -2,16 +2,6 @@ import Seo from "../component/common/Seo";
 import styled from "styled-components";
 import {useRouter} from "next/router";
 
-const Button = styled.button`
-  width: 250px;
-  height: 80px;
-  background-color: green;
-  border-radius: 20px;
-  border: none;
-  color: white;
-  font-size: 30px;
-  margin-top: 30%;
-`;
 
 const Main = styled.div`
   flex: 1;
@@ -19,16 +9,23 @@ const Main = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 80vh;
+  @media (max-width: 600px) {
+    height: 87vh;
+  }
 `;
 
+const MainLogo = styled.img`
+  margin-top: 10%;
+  width: 250px;
+`
 const MyPage = () => {
     const router = useRouter();
     return (
             <Main>
                 <Seo title='MyPage'/>
-                <Button onClick={() => router.push('/')}>HOME 가기</Button>
-                <h1>라우팅 확인용 mypage 입니다</h1>
-                <h1>🌵🌵🌵</h1>
+                <MainLogo src='/asset/image/main_logo.png' alt="선인장 메인로고"/>
+                <h1>mypage 입니다</h1>
             </Main>
     );
 };
