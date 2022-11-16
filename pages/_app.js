@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import Layout from "../component/layout/Layout";
+import "../styles/colorToken.scss"
 
 function MyApp({ Component, pageProps }) {
   return (

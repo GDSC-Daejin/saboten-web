@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const StyledNav = styled.div`
-  box-shadow:0 2px 5px lightgrey;
+  box-shadow:0 2px 5px var(--box-shadow);
   padding-bottom: 3%;
 `
 

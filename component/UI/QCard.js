@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledCard = styled.div`
   border-radius: 10px;
-  border: 2px solid #00C064;
+  border: 2px solid var(--saboten-green-500);
   padding: 25px;
   width:550px;
   margin-bottom: 25px;
