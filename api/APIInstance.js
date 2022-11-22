@@ -9,13 +9,24 @@ const APIInstance = (baseURL) => {
         baseURL: baseURL,
         params: {}
     });
-    apiInstance.defaults.withCredentials = true;
+    // apiInstance.defaults.withCredentials = true;
     // 응답 인터셉터 추가
     apiInstance.interceptors.response.use(
         // 응답 데이터를 가공
         response => response,
         // 오류 응답을 처리
-        error => console.log(error)
+        error => {
+            console.log(error.response.status)
+            if(error.response.status === 401){
+
+            }
+            if(error.response.status === 403){
+
+            }
+            if(error.response.status === 404){
+
+            }
+        }
     );
     return apiInstance;
 };

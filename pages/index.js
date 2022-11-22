@@ -16,17 +16,29 @@ const Main = styled.div`
     height: 87vh;
   }
 `
-
+const Container = styled.div`
+  overflow: auto;
+  padding: 10px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
 const Home = () => {
   const router = useRouter();
-    const newPosts = [{title: "당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString()},
-    {title: "둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString()}];
+    const newPosts = [{title: "😊당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString()},
+                    {title: "🌵둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString()},
+                    {title: "👍👍둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString()},
+                    {title: "❄️당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString()},
+                    {title: "😂둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString()},
+                    {title: "🎁둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString()}];
 
   return (
     <div>
         <Seo title='Home'/>
               <Main>
-                <PostList onPosts={newPosts}></PostList>
+                  <Container>
+                      <PostList onPosts={newPosts}></PostList>
+                  </Container>
               </Main>
     </div>
   )
