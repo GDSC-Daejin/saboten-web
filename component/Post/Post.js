@@ -2,6 +2,7 @@ import QCard from "../UI/QCard";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import styled from "styled-components";
+import Profile from "../UI/Profile";
 
 const Container = styled.div`
   display: flex;
@@ -26,6 +27,7 @@ const Comment = styled.img`
 const Post = (props) => {
     return (
         <Card>
+            <Profile/>
             <h3>{props.post.title}</h3>
             <QCard>{props.post.a}</QCard>
             <QCard>{props.post.b}</QCard>

@@ -1,21 +1,17 @@
 import Seo from "../component/common/Seo";
 import styled from "styled-components";
 import QuestionList from "../component/Question/QuestionList";
-import {Flex} from "../styles/styledComponentModule";
+import {Flex, MainSize} from "../styles/styledComponentModule";
 
-const Main = styled.div`
+const Main = styled(MainSize)`
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
   overflow-y: auto;
   &::-webkit-scrollbar {
     display: none;
-  }
-  @media (max-width: 600px) {
-    height: 87vh;
   }
 `;
 
@@ -26,9 +22,13 @@ const Container = styled.div`
     display: none;
   }
 `
-
+const CategoryList = styled(Flex)`
+  //overflow: auto;
+  //width: 100%;
+  //margin: 0 5px 15px 5px;
+`;
 const Img = styled.img`
-  margin: 20px;
+  margin: 10px;
   cursor: pointer;
   &::-webkit-scrollbar {
     display: none;
@@ -46,14 +46,14 @@ const Category = () => {
     return (
         <Main>
             <Seo title='카테고리'/>
-            <Flex>
+            <CategoryList>
                 <Img src="/asset/image/categotytmp/1.png"  alt={"카테고리"}/>
                 <Img src="/asset/image/categotytmp/2.png"  alt={"카테고리"}/>
                 <Img src="/asset/image/categotytmp/3.png"  alt={"카테고리"}/>
                 <Img src="/asset/image/categotytmp/4.png"  alt={"카테고리"}/>
                 <Img src="/asset/image/categotytmp/3.png"  alt={"카테고리"}/>
                 <Img src="/asset/image/categotytmp/4.png"  alt={"카테고리"}/>
-            </Flex>
+            </CategoryList>
             <Container>
                 <QuestionList onQuestions={newQuestion}></QuestionList>
             </Container>

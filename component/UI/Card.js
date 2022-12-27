@@ -6,8 +6,7 @@ const StyledCard = styled.div`
   border-radius: 10px;
   padding: 20px;
   width: 100%;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin: 20px auto;
 `
 
 const Card = (props) => {

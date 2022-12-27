@@ -1,8 +1,7 @@
-import QCard from "../UI/QCard";
-import Button from "../UI/Button";
 import Card from "../UI/Card";
 import styled from "styled-components";
 import CategoryQCard from "../UI/CategoryQCard";
+import Profile from "../UI/Profile";
 
 const Container = styled.div`
   display: flex;
@@ -12,9 +11,10 @@ const Container = styled.div`
 //   border: 2px solid var(--saboten-gray-200);
 // `
 
-const Questtion = (props) => {
+const Question = (props) => {
     return (
         <Card>
+            <Profile/>
             <h3>{props.question.title}</h3>
             <CategoryQCard>{props.question.a}</CategoryQCard>
             <CategoryQCard>{props.question.b}</CategoryQCard>
@@ -23,4 +23,4 @@ const Questtion = (props) => {
         </Card>
     )
 }
-export default Questtion
+export default Question

@@ -8,6 +8,7 @@ const StyledNavbar = styled.div`
   width: 100%;
   height: 80px;
   border-radius: 30px 30px 0 0;
+  z-index: 10;
   @media (max-width: 600px) {
     height:70px;
   }
@@ -47,9 +48,9 @@ const Footer = () => {
             <Buttons>
                 <Icons src="/asset/image/icons/Home.png" alt="홈화면" onClick={() => router.push('/')} />
                 <Icons src="/asset/image/icons/Dashboard.png" alt="카테고리" onClick={() => router.push('category')} />
-                <AddIcon src="/asset/image/icons/Add.svg" alt="내부API테스트" onClick={useGetAllPosts} />
+                {/*<AddIcon src="/asset/image/icons/Add.svg" alt="내부API테스트" onClick={useGetAllPosts} />*/}
                 {/*<AddIcon src="/asset/image/icons/Add.svg" alt="외부API" onClick={useTmpPosts} />*/}
-                {/*<AddIcon src="/asset/image/icons/Add.svg" alt="글쓰기" onClick={() => router.push('post')} />*/}
+                <AddIcon src="/asset/image/icons/Add.svg" alt="글쓰기" onClick={() => router.push('post')} />
                 <Icons src="/asset/image/icons/Notifications.png" alt="알람" onClick={() => router.push('noti')} />
                 <Icons src="/asset/image/icons/Person.png" alt="마이페이지" onClick={() => router.push('mypage')} />
             </Buttons>
