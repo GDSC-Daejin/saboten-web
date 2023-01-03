@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import Layout from "../component/layout/Layout";
 import "../styles/colorToken.scss"
+import "swiper/css/bundle";
 
 function MyApp({ Component, pageProps }) {
   return (

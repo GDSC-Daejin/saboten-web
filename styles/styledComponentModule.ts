@@ -9,7 +9,7 @@ export const MainContainer = styled.div`
 `;
 
 export const MainSize = styled.div`
-  height: 80vh;
+  //height: 80vh;
   //@media (max-width: 850px) {
   //  height: 65vh;
   //}

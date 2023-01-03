@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+const CircleIcon = (props) => {
+    return (
+        <Icon>
+            <Text>{props.text}</Text>
+        </Icon>
+    )
+}
+export default CircleIcon
+
 const Icon = styled.div`
   background-color: var(--saboten-gray-500);
   border-radius: 50%;
@@ -16,11 +25,3 @@ const Text = styled.p`
   color: var(--saboten-white);
   margin: 0;
 `
-const CircleIcon = (props) => {
-    return (
-        <Icon>
-            <Text>{props.text}</Text>
-        </Icon>
-    )
-}
-export default CircleIcon

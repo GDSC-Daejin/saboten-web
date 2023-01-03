@@ -1,17 +1,18 @@
 import styled from "styled-components";
 import {useRouter} from "next/router";
-import {useGetAllPosts, useTmpPosts} from "../../api/hooks/useGetAllPosts";
 
 const StyledNavbar = styled.div`
   box-shadow:0 -2px 5px var(--box-shadow);
   padding-bottom: 3%;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  height: 80px;
+  max-width: 768px;
+  margin: 0 auto;
+  height: 70px;
   border-radius: 30px 30px 0 0;
   z-index: 10;
-  @media (max-width: 600px) {
-    height:70px;
-  }
+  background-color: white;
 `
 
 const Buttons = styled.div`

@@ -6,36 +6,7 @@ import {Flex, MainContainer} from "../styles/styledComponentModule";
 import Profile from "../component/UI/Profile";
 import CircleIcon from "../component/UI/CircleIcon";
 import {useRef} from "react";
-const Main = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-const Container = styled(MainContainer)`
-  width: 90%;
-  margin-top: 10px;
-`;
-const Text = styled.p`
-  font-size: 17px;
-  color: var(--saboten-gray-500);
-`;
-const Category = styled(Flex)`
-  overflow: auto;
-  width: 100%;
-  margin: 0 5px 15px 5px;
-`;
-const Img = styled.img`
-  margin: 10px 20px;
-  cursor: pointer;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  @media (max-width: 600px) {
-    margin: 10px 5px;
-  }
-`;
+
 const Post = () => {
     const ref = useRef(null);
     return (
@@ -63,10 +34,43 @@ const Post = () => {
                         <CircleIcon text="B"/>
                         <Text>B 선택지를 입력하세요</Text>
                     </GrayCard>
-
                 </Card>
             </Container>
         </Main>
     );
 };
 export default Post;
+
+const Main = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: auto;
+`;
+const Container = styled(MainContainer)`
+  width: 90%;
+  margin-top: 50px;
+  padding-bottom: 30px;
+`;
+const Text = styled.p`
+  font-size: 17px;
+  color: var(--saboten-gray-500);
+`;
+const Category = styled(Flex)`
+  overflow: auto;
+  width: 100%;
+  margin: 0 5px;
+`;
+const Img = styled.img`
+  margin: 10px 20px;
+  cursor: pointer;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media (max-width: 600px) {
+    margin: 5px 5px;
+  }
+`;

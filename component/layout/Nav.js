@@ -2,33 +2,52 @@ import styled from 'styled-components'
 import { useRouter } from "next/router";
 
 const StyledNav = styled.div`
-  box-shadow:0 2px 5px var(--box-shadow);
   padding-bottom: 10px;
+  position: fixed;
+  top: 0px;
 `
-
 const InnerNav = styled.div`
-  display:flex;
+  position: fixed;
+  top: 0;
+  display: flex;
+  box-shadow:0 2px 5px var(--box-shadow);
+  background-color: var(--saboten-white);
   justify-content: space-between;
   align-items: center;
-  padding: 3% 2% 5px 2%;
+  padding: 10px 2% 5px 0;
+  width: 100%;
+  max-width: 768px;
+  @media (max-width: 600px) {
+    //height: 35px;
+  }
 `
 const InnerNavUp = styled(InnerNav)`
-  display:flex;
+  position: fixed;
+  top: 0;
+  display: flex;
+  box-shadow: none;
+  background-color: transparent;
   justify-content: space-between;
-  align-items: center;
-  padding: 3% 2% 5px 2%;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3), inset 0 0 1px rgba(255, 255, 255, 0.3);
+  width: 100%;
+  max-width: 768px;
 `
 
 const TextLogo = styled.img`
-  width: 20%;
+  position: relative;
+  width: 120px;
   margin-left: 20px;
-  //margin: auto;
-  
+  @media (max-width: 600px) {
+    width: 20%;
+  }
 `
 
 const SearchLogo = styled.img`
-  width: 6%;
+  position: relative;
+  width: 40px;
+  right: 5px;
+  @media (max-width: 600px) {
+    width: 25px;
+  }
 `
 
 const Nav = () => {
@@ -37,15 +56,15 @@ const Nav = () => {
     return (
         <>
             {currPath === "" ? (
-                        <InnerNavUp>
-                            <TextLogo src="/asset/image/text_logo.png" alt="로고"/>
-                            <SearchLogo src="/asset/image/search.png" alt="로고"/>
-                        </InnerNavUp>
+                <InnerNavUp>
+                    <TextLogo src="/asset/image/icons/text_white_logo.svg" alt="로고"/>
+                    <SearchLogo src="/asset/image/icons/search_white.svg" alt="로고"/>
+                </InnerNavUp>
             ) :
                 <StyledNav>
                     <InnerNav>
-                        <TextLogo src="/asset/image/text_logo.png" alt="로고"/>
-                        <SearchLogo src="/asset/image/search.png" alt="로고"/>
+                        <TextLogo src="/asset/image/icons/text_logo.png" alt="로고"/>
+                        <SearchLogo src="/asset/image/icons/search.png" alt="로고"/>
                     </InnerNav>
                 </StyledNav>
             }

@@ -22,7 +22,8 @@
     "react-dom": "18.2.0",
     "sass": "^1.57.1",
     "storybook-addon-styled-component-theme": "^2.0.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "swiper": "^8.4.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.7",
