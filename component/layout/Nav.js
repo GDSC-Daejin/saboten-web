@@ -36,6 +36,7 @@ const TextLogo = styled.img`
   position: relative;
   width: 120px;
   margin-left: 20px;
+  margin-top: 10px;
   @media (max-width: 600px) {
     width: 20%;
   }

@@ -11,6 +11,6 @@ const StyledCard = styled.div`
   border-radius: 10px;
   padding: 20px;
   width: 100%;
-  margin: 20px auto;
+  margin: 25px auto;
   text-align: left;
 `

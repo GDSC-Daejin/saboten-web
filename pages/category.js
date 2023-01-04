@@ -34,8 +34,11 @@ export default Category;
 
 const MainContainer = styled(MainSize)`
   height: 100%;
-  padding: 0 10px;
+  padding: 0 40px;
   margin: 20px auto;
+  @media (max-width: 600px) {
+    padding: 0 10px;
+  }
 `
 const Main = styled.div`
   flex: 1;
