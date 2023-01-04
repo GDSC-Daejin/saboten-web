@@ -3,9 +3,8 @@ import Layout from "../component/layout/Layout";
 import "../styles/colorToken.scss"
 import "swiper/css/bundle";
 import {ReactQueryDevtools} from "react-query/devtools";
-import {QueryClient, QueryClientProvider} from 'react-query'
-
-const queryClient = new QueryClient();
+import {QueryClientProvider} from 'react-query'
+import {queryClient} from "../service/queryClient";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -17,7 +16,6 @@ function MyApp({ Component, pageProps }) {
               <ReactQueryDevtools/>
           </QueryClientProvider>
       </>
-
   );
 }
 
