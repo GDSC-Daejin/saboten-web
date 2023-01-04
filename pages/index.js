@@ -5,18 +5,21 @@ import {MainSize} from "../styles/styledComponentModule";
 import {Flex} from "../styles/styledComponentModule";
 import CategorySlider from "../component/page/index/CategorySlider";
 import {useState} from "react";
+import {api} from "../service/apiClient";
 
 const Home = (props) => {
     const [newPosts,setPost]=useState(props.newPosts);
     if(!newPosts) return <h1>새로고침을 해주세요</h1>
-  return (
+    console.log(props.realData.content,">>>")
+
+    return (
     <>
         <Seo title='Home'/>
               <Main>
                   <Banner src={props.bannerLink}/>
                   <Container>
                       <InnerContainer>
-                          <h3>{props.name}</h3>
+                          {/*<h3>{props.name}</h3>*/}
                           <h3>오늘의 HOT</h3>
                           <PostList onPosts={newPosts}></PostList>
                       </InnerContainer>
@@ -57,20 +60,21 @@ const Home = (props) => {
 }
 export default Home;
 
-export const getServerSideProps = async(context) => {
-    // const res = await fetch("http://localhost:3000/api/hello");
-    // const data = await res.json();
+export const getStaticProps = async(context) => {
     const bannerLink = '/asset/image/banner/banner1.png'
+    const res = await api.get('/post');
     const data = {
         name:"dl",
-        bannerLink : '/asset/image/banner/banner1.png',
+        realData: res.data.data,
+        bannerLink : bannerLink.toString(),
         newPosts : [
             // {title: "😊당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString(), mark:false},
             // {title: "🌵둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:true},
             // {title: "👍👍둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기, 붕어빵에 연어도 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:false},
-            // {title: "❄️당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString(), mark:true},
+            // {title: "❄️  당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString(), mark:true},
             // {title: "😂둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:true},
-            {title: "🎁둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:true}]
+            {title: "🎁둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:true}
+        ]
     }
     return {
         props: data
