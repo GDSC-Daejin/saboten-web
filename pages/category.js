@@ -4,12 +4,12 @@ import QuestionList from "../component/Question/QuestionList";
 import {Flex, MainSize} from "../styles/styledComponentModule";
 
 const Category = () => {
-    const newQuestion = [{title: "😊당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString()},
-        {title: "🌵둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString()},
-        {title: "👍👍둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString()},
-        {title: "❄️당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString()},
-        {title: "😂둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString()},
-        {title: "🎁둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString()}];
+    const newQuestion = [{title: "😊당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString(), mark:true},
+        {title: "🌵둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:false},
+        {title: "👍👍둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:true},
+        {title: "❄️당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString(), mark:false},
+        {title: "😂둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:true},
+        {title: "🎁둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:true}];
     return (
         <MainContainer>
             <Seo title='카테고리'/>
@@ -33,9 +33,9 @@ const Category = () => {
 export default Category;
 
 const MainContainer = styled(MainSize)`
-  overflow: auto;
   height: 100%;
   padding: 0 10px;
+  margin: 20px auto;
 `
 const Main = styled.div`
   flex: 1;
@@ -51,7 +51,9 @@ const Main = styled.div`
 `;
 
 const Container = styled.div`
-  padding: 10px;
+  padding: 15px;
+  overflow: auto;
+  height: 90%;
   &::-webkit-scrollbar {
     display: none;
   }
