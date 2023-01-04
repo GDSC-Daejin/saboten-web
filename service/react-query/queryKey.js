@@ -1,5 +1,5 @@
 export const queryKey = {
-    post: 'post',
+    Totalpost: 'Totalpost',
     question: 'question'
 }
 
