@@ -11,7 +11,7 @@ const Post = (props) => {
         <Card>
             <Flex>
                 <Profile/>
-                <Bookmark/>
+                <Bookmark mark={props.post.mark}/>
             </Flex>
             <h3>{props.post.title}</h3>
             <QCard>{props.post.a}</QCard>
