@@ -10,7 +10,7 @@ const Question = (props) => {
         <Card>
             <Flex>
                 <Profile/>
-                <Bookmark/>
+                <Bookmark mark={props.question.mark}/>
             </Flex>
             <h3>{props.question.title}</h3>
             <CategoryQCard>{props.question.a}</CategoryQCard>
