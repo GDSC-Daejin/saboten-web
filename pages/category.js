@@ -2,6 +2,7 @@ import Seo from "../component/common/Seo";
 import styled from "styled-components";
 import QuestionList from "../component/Question/QuestionList";
 import {Flex, MainSize} from "../styles/styledComponentModule";
+import CategoryFilter from "../component/category/CategoryFilter";
 
 const Category = () => {
     const newQuestion = [{title: "😊당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString(), mark:true},
@@ -15,9 +16,9 @@ const Category = () => {
             <Seo title='카테고리'/>
             <Main>
             <CategoryList>
-                <Filter>최신순 |</Filter>
-                <Img src="/asset/image/categotytmp/2.png"  alt={"카테고리"}/>
+                <CategoryFilter/>
                 <Img src="/asset/image/categotytmp/1.png"  alt={"카테고리"}/>
+                <Img src="/asset/image/categotytmp/2.png"  alt={"카테고리"}/>
                 <Img src="/asset/image/categotytmp/3.png"  alt={"카테고리"}/>
                 <Img src="/asset/image/categotytmp/4.png"  alt={"카테고리"}/>
                 <Img src="/asset/image/categotytmp/3.png"  alt={"카테고리"}/>
@@ -71,14 +72,4 @@ const Img = styled.img`
   &::-webkit-scrollbar {
     display: none;
   }
-`
-const Filter = styled.button`
-  margin: 5px auto;
-  cursor: pointer;
-  height: 30px;
-  white-space:nowrap;
-  border: none;
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--saboten-gray-700);
 `

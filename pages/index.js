@@ -6,6 +6,7 @@ import {Flex} from "../styles/styledComponentModule";
 import CategorySlider from "../component/page/index/CategorySlider";
 import {useState} from "react";
 import {api} from "../service/apiClient";
+import HomeFilter from "../component/home/HomeFilter";
 
 const Home = (props) => {
     const [newPosts,setPost]=useState(props.newPosts);
@@ -35,7 +36,7 @@ const Home = (props) => {
                               <h3>뜨거웠던 고민거리</h3>
                               <More>{`더보기 >`}</More>
                           </Flex>
-                          <Button><span>연애</span> 중에서 <span>일주일 간</span> ∨</Button>
+                          <HomeFilter/>
                           <PostList onPosts={newPosts}></PostList>
                       </InnerContainer>
                       <InnerContainer>
@@ -112,14 +113,4 @@ const Banner = styled.img`
 `
 const More = styled.h5`
   color: var(--saboten-gray-500);
-`
-const Button = styled.button`
-  border-radius: 5px;
-  border: solid 2px var(--saboten-green-500);
-  color: var(--saboten-green-500);
-  background-color: transparent;
-  font-size: 15px;
-  && span{
-    font-weight: bold;
-  }
 `
