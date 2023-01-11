@@ -8,6 +8,19 @@ export const MainContainer = styled.div`
     align-items: center;
 `;
 
+export const MainSize = styled.div`
+  //height: 80vh;
+  //@media (max-width: 850px) {
+  //  height: 65vh;
+  //}
+  //@media (max-width: 450px) {
+  //  height: 75vh;
+  //}
+  //@media (max-width: 400px) {
+  //  height: 83vh;
+  //}
+`
+
 export const Flex = styled.div`
     display: flex;
     justify-content: space-between;

@@ -1,16 +1,13 @@
 import Seo from "../component/common/Seo";
 import styled from "styled-components";
 import Link from "next/link";
-const Main = styled.div`
+import {MainSize} from "../styles/styledComponentModule";
+const Main = styled(MainSize)`
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
-  @media (max-width: 600px) {
-    height: 87vh;
-  }
 `;
 const Noti = () => {
     return (
