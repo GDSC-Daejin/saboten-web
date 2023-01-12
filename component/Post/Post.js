@@ -10,12 +10,12 @@ const Post = (props) => {
     return (
         <Card>
             <Flex>
-                <Profile/>
-                <Bookmark mark={props.post.mark}/>
+                <Profile author={props.post.author} date={props.post.updatedAt}/>
+                <Bookmark mark={true}/>
             </Flex>
-            <h3>{props.post.title}</h3>
-            <QCard>{props.post.a}</QCard>
-            <QCard>{props.post.b}</QCard>
+            <h3>{props.post.text}</h3>
+            <QCard>{props.post.votes[0].topic}</QCard>
+            <QCard>{props.post.votes[1].topic}</QCard>
             {/*<QCard selected>{props.post.b}</QCard>*/}
             <Container>
             <Tags>

@@ -4,14 +4,24 @@ import PostList from "../component/Post/PostList";
 import {MainSize} from "../styles/styledComponentModule";
 import {Flex} from "../styles/styledComponentModule";
 import CategorySlider from "../component/page/index/CategorySlider";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {api} from "../service/apiClient";
 import HomeFilter from "../component/home/HomeFilter";
+import {usePost} from "../service/post/hooks/usePost";
 
 const Home = (props) => {
-    const [newPosts,setPost]=useState(props.newPosts);
-    if(!newPosts) return <h1>새로고침을 해주세요</h1>
-    console.log(props.realData.content,">>>")
+    const [newPosts,setPost]=useState(props.newPosts.content);
+    // const [newPosts,setPost]=useState();
+    const myPosts = usePost();
+    useEffect(()=>{
+        async function setting(){
+            await setPost(myPosts.data.content);
+        }
+        setting();
+    },[myPosts])
+    if(!myPosts) return <h1>로딩 중..</h1>
+    if(!newPosts) return <h1>로딩 중 입니다.</h1>
+
 
     return (
     <>
@@ -20,7 +30,6 @@ const Home = (props) => {
                   <Banner src={props.bannerLink}/>
                   <Container>
                       <InnerContainer>
-                          {/*<h3>{props.name}</h3>*/}
                           <h3>오늘의 HOT</h3>
                           <PostList onPosts={newPosts}></PostList>
                       </InnerContainer>
@@ -61,21 +70,14 @@ const Home = (props) => {
 }
 export default Home;
 
-export const getStaticProps = async(context) => {
+export const getStaticProps = async (context) => {
     const bannerLink = '/asset/image/banner/banner1.png'
     const res = await api.get('/post');
+    const myPost = await res;
     const data = {
         name:"dl",
-        realData: res.data.data,
         bannerLink : bannerLink.toString(),
-        newPosts : [
-            // {title: "😊당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString(), mark:false},
-            // {title: "🌵둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:true},
-            // {title: "👍👍둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기, 붕어빵에 연어도 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:false},
-            // {title: "❄️  당신은 고친놈인가 감친놈인가?", a: "평생 고구마만 먹기", b: "평생 감자만 먹기", id:Math.random().toString(), mark:true},
-            // {title: "😂둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:true},
-            {title: "🎁둘 중 하나만 골라봐", a: "붕어빵에 붕어 넣어먹기", b: "거북알에 거북알 넣어먹기", id:Math.random().toString(), mark:true}
-        ]
+        newPosts : myPost.data
     }
     return {
         props: data
@@ -90,7 +92,6 @@ const Main = styled(MainSize)`
   margin: 0 auto;
   align-items: center;
   width: 100%;
-  //height: 80vh;
 `
 const Container = styled.div`
   overflow: auto;
