@@ -8,12 +8,19 @@ const Ul = styled.ul`
   list-style: none;
   text-align: center;
   padding-left: 0;
+  width: 600px;
+  white-space: nowrap;
+  overflow: scroll;
+  @media (max-width: 600px) {
+    width: 320px;
+  }
 `
 
 const Li = styled.li`
-  //display: inline-block;
+  display: inline-block;
+  width: 100%;
+  margin-right: 20px;
 `
-
 const PostList = (props) => {
     return (
             <Ul>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 const StyledNavbar = styled.div`
   box-shadow:0 -2px 5px var(--box-shadow);
@@ -23,7 +24,7 @@ const Buttons = styled.div`
 const Icons = styled.img`
   width: 35px;
   cursor: pointer;
-  padding-bottom: 5%;
+  padding-bottom: 100%;
   @media (max-width: 600px) {
     width: 30px;
   }
@@ -47,13 +48,13 @@ const Footer = () => {
     return (
         <StyledNavbar>
             <Buttons>
-                <Icons src="/asset/image/icons/Home.png" alt="홈화면" onClick={() => router.push('/')} />
-                <Icons src="/asset/image/icons/Dashboard.png" alt="카테고리" onClick={() => router.push('category')} />
+                <Link href={'/'}><Icons src="/asset/image/icons/Home.png" alt="홈화면"/></Link>
+                <Link href={'/category'}><Icons src="/asset/image/icons/Dashboard.png" alt="카테고리"/></Link>
                 {/*<AddIcon src="/asset/image/icons/Add.svg" alt="내부API테스트" onClick={useGetAllPosts} />*/}
                 {/*<AddIcon src="/asset/image/icons/Add.svg" alt="외부API" onClick={useTmpPosts} />*/}
-                <AddIcon src="/asset/image/icons/Add.svg" alt="글쓰기" onClick={() => router.push('post')} />
-                <Icons src="/asset/image/icons/Notifications.png" alt="알람" onClick={() => router.push('noti')} />
-                <Icons src="/asset/image/icons/Person.png" alt="마이페이지" onClick={() => router.push('mypage')} />
+                <Link href={'/post'}><AddIcon src="/asset/image/icons/Add.svg" alt="글쓰기"/></Link>
+                <Link href={'/noti'}><Icons src="/asset/image/icons/Notifications.png" alt="알람"/></Link>
+                <Link href={'/mypage'}><Icons src="/asset/image/icons/Person.png" alt="마이페이지"/></Link>
             </Buttons>
         </StyledNavbar>
     )

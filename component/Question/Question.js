@@ -9,12 +9,12 @@ const Question = (props) => {
     return (
         <Card>
             <Flex>
-                <Profile/>
-                <Bookmark mark={props.question.mark}/>
+                <Profile author={props.question.author} date={props.question.updatedAt}/>
+                <Bookmark mark={true}/>
             </Flex>
             <h3>{props.question.title}</h3>
-            <CategoryQCard>{props.question.a}</CategoryQCard>
-            <CategoryQCard>{props.question.b}</CategoryQCard>
+            <CategoryQCard>{props.question.votes[0].topic}</CategoryQCard>
+            <CategoryQCard>{props.question.votes[1].topic}</CategoryQCard>
             <Container>
             </Container>
         </Card>
