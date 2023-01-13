@@ -24,8 +24,8 @@ const Li = styled.li`
 const PostList = (props) => {
     return (
             <Ul>
-                {props.onPosts.map((post)=>(
-                    <Li key={post.id}>
+                {props.onPosts?.map((post, i)=>(
+                    <Li key={i}>
                         <Post post={post}/>
                     </Li>
 

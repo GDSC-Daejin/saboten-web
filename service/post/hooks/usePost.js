@@ -15,7 +15,7 @@ export const usePost = () => {
             const title = error instanceof Error ? error.message
                 : '서버에 연결 중 오류 발생🥲';
             return alert(title);
-        }});
+        }, onSuccess: (data)=>data});
     return data;
 }
 

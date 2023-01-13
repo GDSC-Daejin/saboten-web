@@ -17,8 +17,8 @@ const Li = styled.li`
 const QuestionList = (props) => {
     return (
             <Ul>
-                {props.onQuestions.map((question)=>(
-                    <Li key={question.id}>
+                {props.onQuestions?.map((question,i)=>(
+                    <Li key={i}>
                         <Question question={question}/>
                     </Li>
 

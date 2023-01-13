@@ -6,22 +6,16 @@ import CategoryFilter from "../component/category/CategoryFilter";
 import {useCategory} from "../service/category/hook/useCategory";
 import {useCategoryPost} from "../service/post/hooks/usePost";
 import {useEffect, useState} from "react";
+import {Loading} from "../component/common/Loading";
 
 
 const Category = () => {
-    const [newQuestion, setQuestion] = useState();
     const [filter, setFilter] = useState(1);
     const categoryies = useCategory();
     const categoryPost = useCategoryPost(2);
 
-    useEffect(()=>{
-        setting();
-        async function setting(){
-            await setQuestion(categoryPost.data.content);
-        }
-    },[categoryPost])
-    if(!categoryPost)return <h1>로딩 중..</h1>
-    if(!newQuestion) return <h1>로딩 중..</h1>
+    // if(!categoryPost) return <h1>로딩 중..</h1>
+    if(!categoryPost.data) return <Loading msg="카테고리별 고민을 찾는 중"/>
     return (
         <MainContainer>
             <Seo title='카테고리'/>
@@ -37,7 +31,7 @@ const Category = () => {
             </CategoryList>
             </Main>
             <Container>
-                <QuestionList onQuestions={newQuestion}></QuestionList>
+                <QuestionList onQuestions={categoryPost.data.content}></QuestionList>
             </Container>
         </MainContainer>
     );
@@ -92,6 +86,7 @@ const CategoryBtn = styled.button`
   font-weight: bold;
   border-radius: 30px;
   border: none;
+  cursor: pointer;
 `
 const CurrCategoryBtn = styled(CategoryBtn)`
   background-color: transparent;

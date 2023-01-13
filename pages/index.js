@@ -4,25 +4,23 @@ import PostList from "../component/Post/PostList";
 import {MainSize} from "../styles/styledComponentModule";
 import {Flex} from "../styles/styledComponentModule";
 import CategorySlider from "../component/page/index/CategorySlider";
-import {useEffect, useState} from "react";
 import {api} from "../service/apiClient";
-import HomeFilter from "../component/home/HomeFilter";
 import {usePost} from "../service/post/hooks/usePost";
+import {Loading} from "../component/common/Loading";
+import {useEffect} from "react";
 
 const Home = (props) => {
-    const [newPosts,setPost]=useState(props.newPosts.content);
-    // const [newPosts,setPost]=useState();
     const myPosts = usePost();
     useEffect(()=>{
-        async function setting(){
-            await setPost(myPosts.data.content);
-        }
-        setting();
-    },[myPosts])
-    if(!myPosts) return <h1>로딩 중..</h1>
-    if(!newPosts) return <h1>로딩 중 입니다.</h1>
-
-
+        window.addEventListener('scroll', ()=>{
+            const scrollable = document.documentElement.scrollWidth - window.innerWidth;
+            const scrolled = window.scrollY;
+            console.log(scrollable)
+        })
+    })
+    if(!myPosts.data) return <Loading msg="고민거리를 찾아오고 있어요"/>
+    // const [newPosts,setPost]=useState(props.newPosts);
+    // if(!newPosts.data) return <h1>로딩 중 입니다.</h1>
     return (
     <>
         <Seo title='Home'/>
@@ -31,7 +29,7 @@ const Home = (props) => {
                   <Container>
                       <InnerContainer>
                           <h3>오늘의 HOT</h3>
-                          <PostList onPosts={newPosts}></PostList>
+                          <PostList onPosts={myPosts.data?.content} />
                       </InnerContainer>
                       <InnerContainer>
                           <Flex>
@@ -40,28 +38,28 @@ const Home = (props) => {
                           </Flex>
                           <CategorySlider/>
                       </InnerContainer>
-                      <InnerContainer>
-                          <Flex>
-                              <h3>뜨거웠던 고민거리</h3>
-                              <More>{`더보기 >`}</More>
-                          </Flex>
-                          <HomeFilter/>
-                          <PostList onPosts={newPosts}></PostList>
-                      </InnerContainer>
-                      <InnerContainer>
-                          <Flex>
-                              <h3>내가 선택했던 글</h3>
-                              <More>{`더보기 >`}</More>
-                          </Flex>
-                          <PostList onPosts={newPosts}></PostList>
-                      </InnerContainer>
-                      <InnerContainer>
-                          <Flex>
-                              <h3>내가 스크랩 한 글</h3>
-                              <More>{`더보기 >`}</More>
-                          </Flex>
-                          <PostList onPosts={newPosts}></PostList>
-                      </InnerContainer>
+                      {/*<InnerContainer>*/}
+                      {/*    <Flex>*/}
+                      {/*        <h3>뜨거웠던 고민거리</h3>*/}
+                      {/*        <More>{`더보기 >`}</More>*/}
+                      {/*    </Flex>*/}
+                      {/*    <HomeFilter/>*/}
+                      {/*    <PostList onPosts={newPosts.content}></PostList>*/}
+                      {/*</InnerContainer>*/}
+                      {/*<InnerContainer>*/}
+                      {/*    <Flex>*/}
+                      {/*        <h3>내가 선택했던 글</h3>*/}
+                      {/*        <More>{`더보기 >`}</More>*/}
+                      {/*    </Flex>*/}
+                      {/*    <PostList onPosts={newPosts}></PostList>*/}
+                      {/*</InnerContainer>*/}
+                      {/*<InnerContainer>*/}
+                      {/*    <Flex>*/}
+                      {/*        <h3>내가 스크랩 한 글</h3>*/}
+                      {/*        <More>{`더보기 >`}</More>*/}
+                      {/*    </Flex>*/}
+                      {/*    <PostList onPosts={newPosts}></PostList>*/}
+                      {/*</InnerContainer>*/}
                   </Container>
               </Main>
     </>
@@ -73,11 +71,11 @@ export default Home;
 export const getStaticProps = async (context) => {
     const bannerLink = '/asset/image/banner/banner1.png'
     const res = await api.get('/post');
-    const myPost = await res;
+    const myPost = await res.data;
     const data = {
         name:"dl",
         bannerLink : bannerLink.toString(),
-        newPosts : myPost.data
+        newPosts : myPost
     }
     return {
         props: data
