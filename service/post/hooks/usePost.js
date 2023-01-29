@@ -20,14 +20,14 @@ export const usePost = () => {
 }
 
 //get /Category별 post-----------------------------------------------------------------
-async function getCategoryPostData(id) {
+export async function getCategoryPostData(id) {
     const {data} = await api.get('/post',{params:{categoryId : id}});
     return data;
 }
 
 export const useCategoryPost = (id) => {
     const fallback = []; //데이터가 아직 안가져왔을때 대신 반환
-    const {data = fallback} = useQuery(postQueryKey.categoryPost, ()=> getCategoryPostData(id),{
+    const {data = fallback} = useQuery([postQueryKey.categoryPost,id], ()=> getCategoryPostData(id),{
         onError: (error) => {
             const title = error instanceof Error ? error.message
                 : '서버에 연결 중 오류 발생🥲';
