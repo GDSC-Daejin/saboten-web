@@ -16,6 +16,7 @@ const Noti = () => {
                     <Notification/>
                     <Notification/>
                 </Notify>
+            <Hr/>
                 <Notify>
                     <Text>이번 주 열람</Text>
                     <Notification/>
@@ -53,4 +54,8 @@ const Text = styled.p`
 `
 const Notify = styled.div`
   margin-bottom: 30px;
+`
+const Hr = styled.hr`
+  width: 100%;
+  border: 1px solid var(--saboten-gray-300);
 `

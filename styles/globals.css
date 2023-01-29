@@ -12,9 +12,17 @@ body {
   height: 100%;
   margin: 0 auto;
   box-shadow: 0 5px 20px 5px gray;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
+*		{ font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+.normal		{ font-weight: 500 }
+.bold		{ font-weight: 700 }
+.light		{ font-weight: 300 }
+
+*:focus {
+  outline: 0;
+}
 
 a {
   color: inherit;
