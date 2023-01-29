@@ -38,28 +38,27 @@ const Home = (props) => {
                           </Flex>
                           <CategorySlider/>
                       </InnerContainer>
-                      {/*<InnerContainer>*/}
-                      {/*    <Flex>*/}
-                      {/*        <h3>뜨거웠던 고민거리</h3>*/}
-                      {/*        <More>{`더보기 >`}</More>*/}
-                      {/*    </Flex>*/}
-                      {/*    <HomeFilter/>*/}
-                      {/*    <PostList onPosts={newPosts.content}></PostList>*/}
-                      {/*</InnerContainer>*/}
-                      {/*<InnerContainer>*/}
-                      {/*    <Flex>*/}
-                      {/*        <h3>내가 선택했던 글</h3>*/}
-                      {/*        <More>{`더보기 >`}</More>*/}
-                      {/*    </Flex>*/}
-                      {/*    <PostList onPosts={newPosts}></PostList>*/}
-                      {/*</InnerContainer>*/}
-                      {/*<InnerContainer>*/}
-                      {/*    <Flex>*/}
-                      {/*        <h3>내가 스크랩 한 글</h3>*/}
-                      {/*        <More>{`더보기 >`}</More>*/}
-                      {/*    </Flex>*/}
-                      {/*    <PostList onPosts={newPosts}></PostList>*/}
-                      {/*</InnerContainer>*/}
+                      <InnerContainer>
+                          <Flex>
+                              <h3>뜨거웠던 고민거리</h3>
+                              <More>{`더보기 >`}</More>
+                          </Flex>
+                          <PostList onPosts={myPosts.data?.content} />
+                      </InnerContainer>
+                      <InnerContainer>
+                          <Flex>
+                              <h3>내가 선택했던 글</h3>
+                              <More>{`더보기 >`}</More>
+                          </Flex>
+                          <PostList onPosts={myPosts.data?.content} />
+                      </InnerContainer>
+                      <InnerContainer>
+                          <Flex>
+                              <h3>내가 스크랩 한 글</h3>
+                              <More>{`더보기 >`}</More>
+                          </Flex>
+                          <PostList onPosts={myPosts.data?.content} />
+                      </InnerContainer>
                   </Container>
               </Main>
     </>

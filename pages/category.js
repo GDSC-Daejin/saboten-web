@@ -12,7 +12,7 @@ import {Loading} from "../component/common/Loading";
 const Category = () => {
     const [filter, setFilter] = useState(1);
     const categoryies = useCategory();
-    const categoryPost = useCategoryPost(2);
+    const categoryPost = useCategoryPost(filter);
 
     // if(!categoryPost) return <h1>로딩 중..</h1>
     if(!categoryPost.data) return <Loading msg="카테고리별 고민을 찾는 중"/>
@@ -22,12 +22,10 @@ const Category = () => {
             <Main>
             <CategoryList>
                 <CategoryFilter/>
-                <CategoryBtn>{categoryies.data[0].name}</CategoryBtn>
-                <CurrCategoryBtn>{categoryies.data[1].name}</CurrCategoryBtn>
-                <CurrCategoryBtn>{categoryies.data[2].name}</CurrCategoryBtn>
-                <CurrCategoryBtn>{categoryies.data[3].name}</CurrCategoryBtn>
-                <CurrCategoryBtn>{categoryies.data[4].name}</CurrCategoryBtn>
-                <CurrCategoryBtn>{categoryies.data[5].name}</CurrCategoryBtn>
+                {categoryies.data?.map((category, i)=>{
+                   return filter===i ? <CurrCategoryBtn>{category.name}</CurrCategoryBtn>
+                        :  <CategoryBtn onClick={()=>setFilter(i)}>{category.name}</CategoryBtn>
+                })}
             </CategoryList>
             </Main>
             <Container>
@@ -70,6 +68,8 @@ const Container = styled.div`
 const CategoryList = styled(Flex)`
   overflow: auto;
   width: 100%;
+  min-width: 600px;
+  margin: 0 100px;
 `;
 const Img = styled.img`
   margin: 5px;
@@ -78,7 +78,7 @@ const Img = styled.img`
     display: none;
   }
 `
-const CategoryBtn = styled.button`
+const CurrCategoryBtn = styled.button`
   background-color: var(--saboten-green-500);
   width: 66px;
   height: 30px;
@@ -88,7 +88,7 @@ const CategoryBtn = styled.button`
   border: none;
   cursor: pointer;
 `
-const CurrCategoryBtn = styled(CategoryBtn)`
+const CategoryBtn = styled(CurrCategoryBtn)`
   background-color: transparent;
   color: var(--saboten-gray-600);
   border: 1px solid var(--saboten-gray-600);
