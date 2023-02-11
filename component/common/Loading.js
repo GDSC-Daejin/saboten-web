@@ -3,9 +3,10 @@ export const Loading = (props) => {
     return (
         <Background>
             <div>
-                <LoadingText>{props.msg}</LoadingText>
-                {/*<img src='/asset/image/icons/sabo.png' alt="로딩중"/>*/}
-                <img src='/asset/image/icons/loading.gif' alt="로딩중"/>
+                {/*<img src='/asset/image/icons/loading.gif' alt="로딩중"/>*/}
+                <img src='/asset/image/icons/newLoading.png' alt="로딩중"/>
+                <LoadingText>{props.title}</LoadingText>
+                <LoadingMsg>{props.msg}</LoadingMsg>
             </div>
         </Background>
     );
@@ -24,8 +25,15 @@ const LoadingText = styled.p`
   align-items:center;
   font-weight: bold;
   color: val(--saboten-gray-700);
-  font-size: 30px;
-  @media (max-width: 600px) {
-    font-size: 15px;
-  }
+  font-size: 20px;
+  //@media (max-width: 600px) {
+  //  font-size: 15px;
+  //}
+`
+const LoadingMsg = styled.p`
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color: val(--saboten-gray-500);
+  font-size: 14px;
 `

@@ -23,8 +23,8 @@ const Category = () => {
             <CategoryList>
                 <CategoryFilter/>
                 {categoryies.data?.map((category, i)=>{
-                   return filter===i ? <CurrCategoryBtn>{category.name}</CurrCategoryBtn>
-                        :  <CategoryBtn onClick={()=>setFilter(i)}>{category.name}</CategoryBtn>
+                   return filter===i+1 ? <CurrCategoryBtn>{category.name}</CurrCategoryBtn>
+                        :  <CategoryBtn onClick={()=>setFilter(i+1)}>{category.name}</CategoryBtn>
                 })}
             </CategoryList>
             </Main>

@@ -10,6 +10,7 @@ const StyledCard = styled.div`
   border: 2px solid var(--saboten-gray-500);
   padding: 25px;
   width:90%;
+  height: 25vh;
   margin: 25px auto;
   align-items: center;
   justify-content: center;
@@ -21,3 +22,4 @@ const StyledCard = styled.div`
     padding: 20px;
   }
 `
+

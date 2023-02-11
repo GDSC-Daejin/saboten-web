@@ -2,6 +2,24 @@ import styled from "styled-components";
 import {useRouter} from "next/router";
 import Link from "next/link";
 
+const Footer = () => {
+    const router = useRouter();
+    return (
+        <StyledNavbar>
+            <Buttons>
+                <Link href={'/'}><Icons src="/asset/image/icons/Home.png" alt="홈화면"/></Link>
+                <Link href={'/category'}><Icons src="/asset/image/icons/Dashboard.png" alt="카테고리"/></Link>
+                {/*<AddIcon src="/asset/image/icons/Add.svg" alt="내부API테스트" onClick={useGetAllPosts} />*/}
+                {/*<AddIcon src="/asset/image/icons/Add.svg" alt="외부API" onClick={useTmpPosts} />*/}
+                <Link href={'/post'}><AddIcon src="/asset/image/icons/Add.svg" alt="글쓰기"/></Link>
+                <Link href={'/noti'}><Icons src="/asset/image/icons/Notifications.png" alt="알람"/></Link>
+                <Link href={'/mypage'}><Icons src="/asset/image/icons/Person.png" alt="마이페이지"/></Link>
+            </Buttons>
+        </StyledNavbar>
+    )
+}
+export default Footer
+
 const StyledNavbar = styled.div`
   box-shadow:0 -2px 5px var(--box-shadow);
   padding-bottom: 3%;
@@ -40,23 +58,4 @@ const AddIcon = styled.img`
     position: center;
     bottom: 35px;
   }
-  
 `
-
-const Footer = () => {
-    const router = useRouter();
-    return (
-        <StyledNavbar>
-            <Buttons>
-                <Link href={'/'}><Icons src="/asset/image/icons/Home.png" alt="홈화면"/></Link>
-                <Link href={'/category'}><Icons src="/asset/image/icons/Dashboard.png" alt="카테고리"/></Link>
-                {/*<AddIcon src="/asset/image/icons/Add.svg" alt="내부API테스트" onClick={useGetAllPosts} />*/}
-                {/*<AddIcon src="/asset/image/icons/Add.svg" alt="외부API" onClick={useTmpPosts} />*/}
-                <Link href={'/post'}><AddIcon src="/asset/image/icons/Add.svg" alt="글쓰기"/></Link>
-                <Link href={'/noti'}><Icons src="/asset/image/icons/Notifications.png" alt="알람"/></Link>
-                <Link href={'/mypage'}><Icons src="/asset/image/icons/Person.png" alt="마이페이지"/></Link>
-            </Buttons>
-        </StyledNavbar>
-    )
-}
-export default Footer

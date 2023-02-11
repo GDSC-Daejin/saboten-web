@@ -1,17 +1,20 @@
 import Seo from "../component/common/Seo";
 import styled from "styled-components";
-import Card from "../component/UI/Card";
 import GrayCard from "../component/UI/GrayCard";
 import {Flex} from "../styles/styledComponentModule";
-import Profile from "../component/UI/Profile";
 import CircleIcon from "../component/UI/CircleIcon";
-import {useRef, useState} from "react";
+import {useState} from "react";
 import {useCategory} from "../service/category/hook/useCategory";
-import {getPostData} from "../service/post/postService";
+import {postPostData} from "../service/post/postService";
+import Modal from "../component/Post/Modal";
+import {Loading} from "../component/common/Loading";
+import {useRouter} from "next/router";
 
 const Post = () => {
-    const [filter, setFilter] = useState(null);
     const categoryies = useCategory();
+    const router = useRouter();
+    const [filter, setFilter] = useState(null);
+    const [submit, setSubmit] = useState(true);
     const [content, setContent] = useState({
         "categoryIds": [
             null
@@ -45,8 +48,9 @@ const Post = () => {
     }
     const categoryHandler = (i) => {
         setFilter(i);
+        console.log(i);
         let copiedContent = content;
-        copiedContent.categoryIds=i;
+        copiedContent.categoryIds=[i];
         setContent(copiedContent);
     }
     const submitHandler = () => {
@@ -57,26 +61,21 @@ const Post = () => {
         else{
             let createdPost = content;
             Object.assign(createdPost,vote);
-            // getPostData(createdPost);
-            // getPostData(createdPost).then(r => console.log(r));
-            console.log(createdPost);
+            setSubmit(false);
+            postPostData(createdPost).then(r => console.log(r));
+            setSubmit(false);
+            router.back();
         }
     }
+    if(submit === false) return <Loading title="고민거리를 등록 중이에요!"
+                                         msg="업로드된 게시글을 선인장에서 확인하세요."/>
     return (
         <Main>
             <Seo title='Post'/>
+            <Modal/>
             <Container>
-                <Text>카테고리를 선택하세요</Text>
-                <Category>
-                    {categoryies.data?.map((category, i)=>{
-                        return filter===i ? <CurrCategoryBtn>{category.name}</CurrCategoryBtn>
-                            :  <CategoryBtn onClick={()=>categoryHandler(i)}>{category.name}</CategoryBtn>
-                    })}
-                </Category>
-                <Card>
-                    <Profile author={{nickname: "임시이름"}}/>
-                    <Input type='text' placeholder='제목을 입력하세요'
-                           onChange={getValue} name='text'/>
+                <Input type='text' placeholder='제목을 입력하세요'
+                       onChange={getValue} name='text'/>
                     <GrayCard>
                         <CircleIcon text="A"/>
                         <Textarea placeholder="A 선택지를 입력하세요" onChange={getVoteValue} name="0"></Textarea>
@@ -85,9 +84,15 @@ const Post = () => {
                         <CircleIcon text="B"/>
                         <Textarea placeholder="B 선택지를 입력하세요" onChange={getVoteValue} name="1"></Textarea>
                     </GrayCard>
-                </Card>
-                <SubmitBtn onClick={submitHandler}>고민올리기</SubmitBtn>
+                <Text>카테고리 선택</Text>
+                <Category>
+                    {categoryies.data?.map((category, i)=>{
+                        return filter===i+1 ? <CurrCategoryBtn key={i+1}>{category.name}</CurrCategoryBtn>
+                            :  <CategoryBtn onClick={()=>categoryHandler(i+1)} key={i+1}>{category.name}</CategoryBtn>
+                    })}
+                </Category>
             </Container>
+            <SubmitBtn onClick={submitHandler}>등록하기</SubmitBtn>
         </Main>
     );
 };
@@ -104,10 +109,10 @@ const Main = styled.div`
 `;
 const Container = styled.div`
   width: 90%;
-  margin-top: 20px;
+  margin: 0 auto 0 auto;
   padding-bottom: 30px;
   @media (max-width: 380px) {
-    margin-top: 150px;
+    margin-top: 0;
   }
 `;
 const Text = styled.p`
@@ -145,11 +150,15 @@ const CategoryBtn = styled(CurrCategoryBtn)`
 const SubmitBtn = styled.button`
   background-color: var(--saboten-green-500);
   color: var(--saboten-white);
-  font-size: 17px;
-  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
   border: none;
-  padding: 10px;
+  padding: 20px;
   width: 100%;
+  margin: 15px auto auto 0;
+  position: fixed;
+  bottom: 0;
+  max-width: 768px;
   &:active{
     background-color: var(--saboten-green-700);
   }
@@ -159,6 +168,7 @@ const Input = styled.input`
   width: 100%;
   font-size: 17px;
   margin-top: 15px;
+  background-color: var(--saboten-background);
   &::placeholder{
     color: var(--saboten-gray-500);
   }
@@ -169,6 +179,7 @@ const Textarea = styled.textarea`
   width: 100%;
   margin-top: 15px;
   text-align: center;
+  background-color: var(--saboten-background);
   &::placeholder{
     color: var(--saboten-gray-500);
     text-align: center;

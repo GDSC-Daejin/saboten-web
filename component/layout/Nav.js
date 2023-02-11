@@ -1,10 +1,53 @@
 import styled from 'styled-components'
 import { useRouter } from "next/router";
+import {useRecoilState} from "recoil";
+import {postModalState} from "../../service/atom/common";
+
+const Nav = () => {
+    const router = useRouter();
+    const currPath = router.pathname.slice(1);
+    const [modal, setModal] = useRecoilState(postModalState);
+    const ModalHandler = () => setModal(true);
+    return (
+        <>
+            {currPath === "" ? (
+                <InnerNavUp>
+                    <TextLogo src="/asset/image/icons/text_white_logo.svg" alt="로고"/>
+                    <SearchLogo src="/asset/image/icons/search_white.svg" alt="로고"/>
+                </InnerNavUp>
+            ) : currPath === "mypage"? (
+                <StyledNav>
+                    <MypageNav>
+                        <Icon src="/asset/image/icons/ArrowBack.png" onClick={() => router.back()} alt="뒤로가기"/>
+                        <Text>내 프로필</Text>
+                        <Icon src="/asset/image/icons/Settings.png"onClick={() => alert("준비중인 기능입니다")}alt="설정"/>
+                    </MypageNav>
+                </StyledNav>
+                ) : currPath === "post"? (
+                    <StyledNav>
+                        <MypageNav>
+                            <Icon src="/asset/image/icons/Clear.png" onClick={ModalHandler} alt="뒤로가기"/>
+                            {/*<TextPost>등록</TextPost>*/}
+                        </MypageNav>
+                    </StyledNav>
+                ) :
+                <StyledNav>
+                    <InnerNav>
+                        <TextLogo src="/asset/image/icons/text_logo.png" alt="아이콘로고"/>
+                        <SearchLogo src="/asset/image/icons/search.png" alt="로고"/>
+                    </InnerNav>
+                </StyledNav>
+            }
+        </>
+    );
+}
+export default Nav
 
 const StyledNav = styled.div`
   padding-bottom: 10px;
   position: fixed;
-  top: 0px;
+  top: 0;
+  margin: 0 auto;
 `
 const InnerNav = styled.div`
   position: fixed;
@@ -14,7 +57,7 @@ const InnerNav = styled.div`
   background-color: var(--saboten-white);
   justify-content: space-between;
   align-items: center;
-  padding: 10px 2% 5px 0;
+  padding: 5px 5px 10px 5px;
   width: 100%;
   max-width: 768px;
   @media (max-width: 600px) {
@@ -31,7 +74,9 @@ const InnerNavUp = styled(InnerNav)`
   width: 100%;
   max-width: 768px;
 `
-
+const MypageNav = styled(InnerNav)`
+  height: 60px;
+`
 const TextLogo = styled.img`
   position: relative;
   width: 120px;
@@ -41,7 +86,6 @@ const TextLogo = styled.img`
     width: 20%;
   }
 `
-
 const SearchLogo = styled.img`
   position: relative;
   width: 40px;
@@ -50,26 +94,22 @@ const SearchLogo = styled.img`
     width: 25px;
   }
 `
-
-const Nav = () => {
-    const router = useRouter();
-    const currPath = router.pathname.slice(1);
-    return (
-        <>
-            {currPath === "" ? (
-                <InnerNavUp>
-                    <TextLogo src="/asset/image/icons/text_white_logo.svg" alt="로고"/>
-                    <SearchLogo src="/asset/image/icons/search_white.svg" alt="로고"/>
-                </InnerNavUp>
-            ) :
-                <StyledNav>
-                    <InnerNav>
-                        <TextLogo src="/asset/image/icons/text_logo.png" alt="로고"/>
-                        <SearchLogo src="/asset/image/icons/search.png" alt="로고"/>
-                    </InnerNav>
-                </StyledNav>
-            }
-        </>
-    );
-}
-export default Nav
+const Icon = styled.img`
+  height: 30px;
+  margin: 0 10px;
+  cursor: pointer;
+`
+const Text = styled.h2`
+  color: var(--saboten-green-500);
+  @media (max-width: 600px) {
+    font-size: 19px;
+  }
+`
+const TextPost = styled.h2`
+  color: var(--saboten-green-500);
+  margin-right: 15px;
+  cursor: pointer;
+  @media (max-width: 600px) {
+    font-size: 19px;
+  }
+`

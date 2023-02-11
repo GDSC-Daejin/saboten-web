@@ -1,5 +1,5 @@
 import {authApi} from "../apiClient";
 
-export async function getPostData(newPost){
+export async function postPostData(newPost){
     return authApi.post('/post', newPost);
 }

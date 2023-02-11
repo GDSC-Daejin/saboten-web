@@ -14,11 +14,16 @@ export default function Layout({ children }) {
                         {children}
                         <Footer/>
                     </HomeBody>
-                ) :
-                <Body home>
-                    {children}
-                    <Footer/>
-                </Body>
+                ) : currPath === "post" ? (
+                    <Body home>
+                        {children}
+                    </Body>
+                ):(
+                    <Body home>
+                        {children}
+                        <Footer/>
+                    </Body>
+                )
             }
         </>
     );
