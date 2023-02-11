@@ -17,7 +17,7 @@ const Background = styled.div`
   align-items: center;
   min-height: 100vh;
   text-align: center;
-  background-color: white;
+  background-color: var(--saboten-background);
 `
 const LoadingText = styled.p`
   display:flex;
