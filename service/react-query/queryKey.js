@@ -1,6 +1,7 @@
 export const postQueryKey = {
     Totalpost: 'Totalpost',
-    categoryPost: 'categoryPost'
+    categoryPost: 'categoryPost',
+    debatePost: 'debatePost'
 }
 export const categoryQueryKey = {
     category: 'category',

@@ -29,7 +29,7 @@ const Category = () => {
             </CategoryList>
             </Main>
             <Container>
-                <QuestionList onQuestions={categoryPost.data.content}></QuestionList>
+                <QuestionList onQuestions={categoryPost.data.data}></QuestionList>
             </Container>
         </MainContainer>
     );

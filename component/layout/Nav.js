@@ -18,16 +18,16 @@ const Nav = () => {
             ) : currPath === "mypage"? (
                 <StyledNav>
                     <MypageNav>
-                        <Icon src="/asset/image/icons/ArrowBack.png" onClick={() => router.back()} alt="뒤로가기"/>
+                        {/*<Icon src="/asset/image/icons/ArrowBack.png" onClick={() => router.back()} alt="뒤로가기"/>*/}
                         <Text>내 프로필</Text>
-                        <Icon src="/asset/image/icons/Settings.png"onClick={() => alert("준비중인 기능입니다")}alt="설정"/>
+                        <GrayIcon src="/asset/image/icons/Settings.png" onClick={() => alert("준비중인 기능입니다")}alt="설정"/>
                     </MypageNav>
                 </StyledNav>
                 ) : currPath === "post"? (
                     <StyledNav>
                         <MypageNav>
                             <Icon src="/asset/image/icons/Clear.png" onClick={ModalHandler} alt="뒤로가기"/>
-                            {/*<TextPost>등록</TextPost>*/}
+                            <TextPost>글 올리기</TextPost>
                         </MypageNav>
                     </StyledNav>
                 ) :
@@ -73,15 +73,18 @@ const InnerNavUp = styled(InnerNav)`
   justify-content: space-between;
   width: 100%;
   max-width: 768px;
+  z-index: 10;
 `
 const MypageNav = styled(InnerNav)`
   height: 60px;
+  padding-left: 20px;
 `
 const TextLogo = styled.img`
   position: relative;
   width: 120px;
   margin-left: 20px;
   margin-top: 10px;
+  z-index: 100;
   @media (max-width: 600px) {
     width: 20%;
   }
@@ -99,8 +102,11 @@ const Icon = styled.img`
   margin: 0 10px;
   cursor: pointer;
 `
+const GrayIcon= styled(Icon)`
+  color: var(--saboten-gray-800);
+`
 const Text = styled.h2`
-  color: var(--saboten-green-500);
+  color: var(--saboten-gray-800);
   @media (max-width: 600px) {
     font-size: 19px;
   }

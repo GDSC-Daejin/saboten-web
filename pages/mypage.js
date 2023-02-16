@@ -22,6 +22,12 @@ const MyPage = () => {
                 <Container>
                     <Flex>
                         <ProfileImg src={ImgURL}/>
+                        <div>
+                            <Text size="18px" bold='bold'>{`박종국`}</Text>
+                            <Text  size="12px" color="var(--saboten-gray-500)">{`misoy160@gmail.com`}</Text>
+                        </div>
+                    </Flex>
+                    <PostData>
                         <Box>
                             <Text size="18px" bold='bold'>{`27`}</Text>
                             <Text  size="12px" color="var(--saboten-gray-500)">{`게시물`}</Text>
@@ -34,8 +40,7 @@ const MyPage = () => {
                             <Text size="18px" bold='bold'>{`32`}</Text>
                             <Text  size="12px" color="var(--saboten-gray-500)">{`스크랩`}</Text>
                         </Box>
-                    </Flex>
-                    <IntroduceText>뭐요, 말하는 강아지 처음 보나요</IntroduceText>
+                    </PostData>
                 </Container>
                 <Inner>
                     <FilterBtn>내가 쓴 글</FilterBtn>
@@ -74,14 +79,11 @@ const Main = styled(MainSize)`
   width: 100%;
 `;
 const Container = styled.div`
-  margin: 30px 20px;
+  margin: 0 20px 20px 20px;
   width: 100%;
-  padding: 0 100px;
-  border-bottom: 2px solid var(--saboten-gray-200);
-  @media (max-width: 600px) {
-    margin: 20px;
-    padding: 0 20px;
-  }
+  padding: 30px 100px;
+  background-color: var(--saboten-white);
+
 `
 const Inner = styled(Flex)`
   overflow: auto;
@@ -146,4 +148,10 @@ const CategoryBtn = styled(CurrCategoryBtn)`
     background-color: var(--saboten-gray-300);
     color: black;
   }
+`
+const PostData = styled(Flex)`
+  border: solid 2px var(--saboten-gray-200);
+  border-radius: 10px;
+  margin: 20px 0;
+  padding: 30px 50px;
 `
