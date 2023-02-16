@@ -1,7 +1,5 @@
 import Link from "next/link";
-import {getAccessToken} from "./api/auth/[...nextauth]";
 import {useState} from "react";
-// import {signin} from "next-auth/core/routes";
 
 const Login = () => {
     const [accessToken, setToken] = useState(null);
