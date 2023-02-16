@@ -13,7 +13,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Home = (props) => {
     const myPosts = usePost(); //전체포스트 조회
-    const debatePosts = useDebatePost(); //뜨거운 고민거리 조회
+    // const debatePosts = useDebatePost(); //뜨거운 고민거리 조회
     useEffect(()=>{
         window.addEventListener('scroll', ()=>{
             const scrollable = document.documentElement.scrollWidth - window.innerWidth;
@@ -45,7 +45,7 @@ const Home = (props) => {
                               <h3>뜨거웠던 고민거리</h3>
                               <More>{`더보기 >`}</More>
                           </Flex>
-                          <PostList onPosts={debatePosts.data?.data} />
+                          {/*<PostList onPosts={debatePosts.data?.data} />*/}
                       </InnerContainer>
                       <InnerContainer>
                           <Flex>
@@ -84,12 +84,12 @@ export const getStaticProps = async (context) => {
     const bannerLink = ['/asset/image/banner/banner1.png',
         '/asset/image/banner/banner2.png',
         '/asset/image/banner/banner3.png']
-    const res = await api.get('/post');
-    const myPost = await res.data;
+    // const res = await api.get('/post');
+    // const myPost = await res.data;
     const data = {
         name:"dl",
         bannerLink : bannerLink,
-        newPosts : myPost
+        // newPosts : myPost
     }
     return {
         props: data

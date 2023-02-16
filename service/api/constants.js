@@ -1,5 +1,5 @@
 // export const baseUrl = 'https://saboten-myeongju00.koyeb.app/api/v1';
-export const baseUrl = 'https://pitapat-adventcalendar.site';
+export const baseUrl = 'https://pitapat-adventcalendar.site/api/v1';
 // export const baseImgUrl = `${baseUrl}/image`;
 
 
