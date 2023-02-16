@@ -2,7 +2,7 @@
   "name": "front-santas",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://gdsc-saboten.netlify.app/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
