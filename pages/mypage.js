@@ -20,13 +20,13 @@ const MyPage = () => {
             <Main>
                 <Seo title='MyPage'/>
                 <Container>
-                    <Flex>
+                    <ProfileFlex>
                         <ProfileImg src={ImgURL}/>
                         <div>
                             <Text size="18px" bold='bold'>{`박종국`}</Text>
                             <Text  size="12px" color="var(--saboten-gray-500)">{`misoy160@gmail.com`}</Text>
                         </div>
-                    </Flex>
+                    </ProfileFlex>
                     <PostData>
                         <Box>
                             <Text size="18px" bold='bold'>{`27`}</Text>
@@ -154,4 +154,8 @@ const PostData = styled(Flex)`
   border-radius: 10px;
   margin: 20px 0;
   padding: 30px 50px;
+`
+const ProfileFlex = styled.div`
+    display: flex;
+    margin-right: auto;
 `

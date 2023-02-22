@@ -4,7 +4,8 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
     removeConsole: process.env.NODE_ENV === "production"
-  }
+  },
+  assetPrefix:'.'
 }
 
 module.exports = nextConfig
