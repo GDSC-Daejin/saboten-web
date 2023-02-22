@@ -22,10 +22,10 @@ const MyPage = () => {
                 <Container>
                     <ProfileFlex>
                         <ProfileImg src={ImgURL}/>
-                        <div>
+                        <InfoDiv>
                             <Text size="18px" bold='bold'>{`박종국`}</Text>
                             <Text  size="12px" color="var(--saboten-gray-500)">{`misoy160@gmail.com`}</Text>
-                        </div>
+                        </InfoDiv>
                     </ProfileFlex>
                     <PostData>
                         <Box>
@@ -83,11 +83,18 @@ const Container = styled.div`
   width: 100%;
   padding: 30px 100px;
   background-color: var(--saboten-white);
-
+  @media (max-width: 600px) {
+    padding: 30px 40px;
+  }
 `
 const Inner = styled(Flex)`
   overflow: auto;
   width: 90%;
+`
+const InfoDiv = styled.div`
+  margin-left: 20px;
+  align-items: center;
+  height: 80px;
 `
 const Box = styled.div`
   text-align: center;
@@ -153,7 +160,8 @@ const PostData = styled(Flex)`
   border: solid 2px var(--saboten-gray-200);
   border-radius: 10px;
   margin: 20px 0;
-  padding: 30px 50px;
+  padding: 30px 20px;
+  justify-content: space-around;
 `
 const ProfileFlex = styled.div`
     display: flex;
