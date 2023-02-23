@@ -115,6 +115,11 @@ const Container = styled.div`
 `
 const InnerContainer = styled.div`
   padding: 10px;
+  width: 650px;
+  justify-content: center;
+  @media (max-width: 600px) {
+    width: 350px;
+  }
 `
 const Banner = styled.img`
   width: 100%;
