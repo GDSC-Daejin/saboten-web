@@ -10,6 +10,8 @@ import {Loading} from "../component/common/Loading";
 import {useEffect} from "react";
 import {Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Modal from "../component/Post/Modal";
+import Popup from "../component/common/Popup";
 
 const Home = (props) => {
     const myPosts = usePost(); //전체포스트 조회
@@ -28,6 +30,7 @@ const Home = (props) => {
     <>
         <Seo title='Home'/>
               <Main>
+                  <Popup/>
                   <Carousel showArrows={true} infiniteLoop={true} autoPlay={true}>
                       <div>
                           <Banner src={props.bannerLink[0]}  alt='배너이미지'/>
