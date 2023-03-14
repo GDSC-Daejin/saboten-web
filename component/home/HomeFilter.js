@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import vImg from "../../public/asset/image/icons/V.png"
 
 const HomeFilter = () => {
     const handleChange = (e) => {
