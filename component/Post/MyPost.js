@@ -5,25 +5,6 @@ import styled from "styled-components";
 import Profile from "../UI/Profile";
 import {Flex} from "../../styles/styledComponentModule";
 import Bookmark from "./Bookmark";
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-
-const Tags = styled.div`
-  //display: flex;
-  //align-items: flex-start;
-`
-const Buttons = styled.div`
-  //display: flex;
-  //justify-content: flex-end;
-`
-const Heart = styled.img`
-  margin: 0 10px;
-`
-const Comment = styled.img`
-  margin: 0 10px;
-`
 
 const MyPost = (props) => {
     return (
@@ -48,4 +29,24 @@ const MyPost = (props) => {
         </Card>
     )
 }
-export default MyPost
+export default MyPost;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const Tags = styled.div`
+  //display: flex;
+  //align-items: flex-start;
+`
+const Buttons = styled.div`
+  //display: flex;
+  //justify-content: flex-end;
+`
+const Heart = styled.img`
+  margin: 0 10px;
+`
+const Comment = styled.img`
+  margin: 0 10px;
+`

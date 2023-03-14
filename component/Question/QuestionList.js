@@ -4,16 +4,6 @@ import QCard from "../UI/QCard";
 import Button from "../UI/Button";
 import Question from "./Question";
 
-const Ul = styled.ul`
-  list-style: none;
-  text-align: center;
-  padding-left: 0;
-`
-
-const Li = styled.li`
-  //display: inline-block;
-`
-
 const QuestionList = (props) => {
     return (
             <Ul>
@@ -26,4 +16,15 @@ const QuestionList = (props) => {
             </Ul>
     )
 }
-export default QuestionList
+export default QuestionList;
+
+const Ul = styled.ul`
+  list-style: none;
+  text-align: center;
+  padding-left: 0;
+`
+
+const Li = styled.li`
+  //display: inline-block;
+`
+

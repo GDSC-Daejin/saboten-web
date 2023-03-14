@@ -4,6 +4,20 @@ import QCard from "../UI/QCard";
 import Button from "../UI/Button";
 import Post from "./Post";
 
+const PostList = (props) => {
+    return (
+            <Ul>
+                {props.onPosts?.map((post, i)=>(
+                    <Li key={i}>
+                        <Post post={post}/>
+                    </Li>
+
+                ))}
+            </Ul>
+    )
+}
+export default PostList;
+
 const Ul = styled.ul`
   list-style: none;
   text-align: center;
@@ -21,16 +35,3 @@ const Li = styled.li`
   width: 100%;
   margin-right: 20px;
 `
-const PostList = (props) => {
-    return (
-            <Ul>
-                {props.onPosts?.map((post, i)=>(
-                    <Li key={i}>
-                        <Post post={post}/>
-                    </Li>
-
-                ))}
-            </Ul>
-    )
-}
-export default PostList

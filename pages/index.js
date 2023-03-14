@@ -7,22 +7,27 @@ import CategorySlider from "../component/page/index/CategorySlider";
 import {api} from "../service/apiClient";
 import {useDebatePost, usePost} from "../service/post/hooks/usePost";
 import {Loading} from "../component/common/Loading";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Modal from "../component/Post/Modal";
 import Popup from "../component/common/Popup";
+import HomeFilter from "../component/home/HomeFilter";
 
 const Home = (props) => {
     const myPosts = usePost(); //전체포스트 조회
+    //TODO: popUP기능 HomeFilter에서 작업하기 false면 안누른거, 버튼누르면 true 해야함 양방향 바인딩 or 그냥 recoil
+    const [popupState, setPopup] = useState(false);
     // const debatePosts = useDebatePost(); //뜨거운 고민거리 조회
-    useEffect(()=>{
+
+    useEffect(()=> {
         window.addEventListener('scroll', ()=>{
             const scrollable = document.documentElement.scrollWidth - window.innerWidth;
             const scrolled = window.scrollY;
             console.log(scrollable)
         })
     })
+
     if(!myPosts.data) return <Loading msg="잠시만요..! 고민거리를 찾아오고 있어요"/>
     // const [newPosts,setPost]=useState(props.newPosts);
     // if(!newPosts.data) return <h1>로딩 중 입니다.</h1>
@@ -30,7 +35,7 @@ const Home = (props) => {
     <>
         <Seo title='Home'/>
               <Main>
-                  <Popup/>
+                  <Popup view={popupState}/>
                   <Carousel showArrows={true} infiniteLoop={true} autoPlay={true}>
                       <div>
                           <Banner src={props.bannerLink[0]}  alt='배너이미지'/>
@@ -48,6 +53,7 @@ const Home = (props) => {
                               <h3>뜨거웠던 고민거리</h3>
                               <More>{`더보기 >`}</More>
                           </Flex>
+                          <HomeFilter/>
                           {/*<PostList onPosts={debatePosts.data?.data} />*/}
                       </InnerContainer>
                       <InnerContainer>
@@ -134,4 +140,5 @@ const Banner = styled.img`
 `
 const More = styled.h5`
   color: var(--saboten-gray-500);
+  cursor: pointer;
 `

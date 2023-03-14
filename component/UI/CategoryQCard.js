@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+const CategoryQCard = (props) => {
+    return (
+        <>
+            <StyledCard>{props.children}</StyledCard>
+        </>
+    )
+}
+export default CategoryQCard;
+
+
 const StyledCard = styled.div`
   border-radius: 10px;
   border: 2px solid var(--saboten-gray-500);
@@ -12,12 +22,3 @@ const StyledCard = styled.div`
     padding: 20px;
   }
 `
-
-const CategoryQCard = (props) => {
-    return (
-        <>
-            <StyledCard>{props.children}</StyledCard>
-        </>
-    )
-}
-export default CategoryQCard;

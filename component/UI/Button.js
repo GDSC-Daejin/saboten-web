@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+const Button = (props) => {
+    return (
+        <StyledButton>{props.children}</StyledButton>
+    )
+}
+export default Button;
+
 const StyledButton = styled.button`
   width:55px;
   height: 25px;
@@ -10,10 +17,3 @@ const StyledButton = styled.button`
   font-size: 13px;
   margin: 0 5px;
 `;
-
-const Button = (props) => {
-    return (
-        <StyledButton>{props.children}</StyledButton>
-    )
-}
-export default Button
